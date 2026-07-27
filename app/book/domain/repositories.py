@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from app.library.domain.entities import BookEntity
+from app.book.domain.entities import BookEntity
 from uuid import UUID
 
 

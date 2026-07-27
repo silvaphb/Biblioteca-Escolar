@@ -1,6 +1,6 @@
 from typing import Optional
 from ninja import Schema
-from app.library.application.dtos import BookInDTO
+from app.book.application.dtos import BookInDTO
 
 
 class BookIn(Schema):

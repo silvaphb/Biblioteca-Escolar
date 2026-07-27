@@ -1,8 +1,8 @@
 from typing import List
 from ninja import Router
 
-from app.library.api.dependencies import LibraryContainer
-from app.library.api.schemas import BookIn, BookOut, BookUpdate
+from app.book.api.dependencies import LibraryContainer
+from app.book.api.schemas import BookIn, BookOut, BookUpdate
 
 api = Router()
 container = LibraryContainer()

@@ -1,12 +1,12 @@
 from dependency_injector import containers, providers
 
-from app.library.application.use_cases import (
+from app.book.application.use_cases import (
     DeleteBookUseCase,
     RegisterBookUseCase,
     ReturnBookUseCase,
     UpdateBookUseCase,
 )
-from app.library.infrastruture.repository import BookRepository
+from app.book.infrastruture.repository import BookRepository
 
 
 class LibraryContainer(containers.DeclarativeContainer):

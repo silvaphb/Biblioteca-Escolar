@@ -1,5 +1,5 @@
-from app.library.domain.repositories import IBookRepository
-from app.library.domain.entities import BookEntity
+from app.book.domain.repositories import IBookRepository
+from app.book.domain.entities import BookEntity
 
 from typing import List
 

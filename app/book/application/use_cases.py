@@ -1,6 +1,6 @@
-from app.library.domain.repositories import IBookRepository
-from app.library.domain.entities import BookEntity
-from app.library.application.dtos import BookInDTO, BookOutDTO, BookUpdateDTO
+from app.book.domain.repositories import IBookRepository
+from app.book.domain.entities import BookEntity
+from app.book.application.dtos import BookInDTO, BookOutDTO, BookUpdateDTO
 from uuid import UUID
 
 

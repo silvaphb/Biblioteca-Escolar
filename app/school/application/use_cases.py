@@ -1,3 +1,4 @@
+from typing import List
 from uuid import UUID
 
 from app.school.domain.repositories import ISchoolRepository
@@ -27,3 +28,10 @@ class ReturnByIdSchoolUseCase:
             raise NotFoundSchoolException('not found school with this id')
 
         return SchoolOutDTO.from_domain(school)
+
+class ListAllSchoolUseCase:
+    def __init__(self, school_repo: ISchoolRepository):
+        self.school_repo = school_repo
+
+    def execute(self) -> List[SchoolOutDTO]:
+        return [SchoolOutDTO.from_domain(school) for school in self.school_repo.list_all()]

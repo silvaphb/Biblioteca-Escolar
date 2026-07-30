@@ -35,3 +35,21 @@ class ListAllSchoolUseCase:
 
     def execute(self) -> List[SchoolOutDTO]:
         return [SchoolOutDTO.from_domain(school) for school in self.school_repo.list_all()]
+
+class UpdateSchoolUseCase:
+    def __init__(self, school_repo: ISchoolRepository):
+        self.school_repo = school_repo
+
+    def execute(self, id: UUID, dto: SchoolInDTO) -> SchoolOutDTO:
+        school = self.school_repo.find_by_id(id)
+        if not school:
+            raise NotFoundSchoolException('not found school with this id')
+
+        if dto.name:
+            school.change_name(dto.name)
+
+        if dto.code_inep:
+            school.change_code_inep(dto.code_inep)
+
+        school = self.school_repo.save(school)
+        return SchoolOutDTO.from_domain(school)

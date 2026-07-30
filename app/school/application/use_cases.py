@@ -53,3 +53,21 @@ class UpdateSchoolUseCase:
 
         school = self.school_repo.save(school)
         return SchoolOutDTO.from_domain(school)
+
+class DeleteSchoolUseCase:
+    def __init__(self, school_repo: ISchoolRepository):
+        self.school_repo = school_repo
+
+    def execute(self, id: UUID) -> SchoolOutDTO:
+        school = self.school_repo.find_by_id(id)
+        if not school:
+            raise NotFoundSchoolException('not found school with this id')
+
+        self.school_repo.delete(id)
+
+        return SchoolOutDTO(
+            id=school.id,
+            name='DELETED SCHOOL',
+            code_inep='DELETED_SCHOOL',
+            created_at=school.created_at
+        )

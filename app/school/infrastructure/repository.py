@@ -32,6 +32,13 @@ class SchoolRepository(ISchoolRepository):
     def verify_by_code_inep(self, code_inep: str) -> bool:
         return School.objects.filter(code_inep=code_inep).exists()
 
+    def delete(self, id: UUID) -> bool:
+        try:
+            School.objects.get(id=id).delete()
+            return True
+        except School.DoesNotExist:
+            return False
+
     def to_entity(self, model):
         return SchoolEntity(
             id=model.id,

@@ -1,10 +1,10 @@
 from dataclasses import dataclass, field
 from datetime import datetime
-from uuid import UUID
+from uuid import UUID, uuid4
 
 @dataclass
 class SchoolEntity:
-    id: UUID | None = field(default=None)
+    id: UUID | None = field(default_factory=uuid4)
     name: str = field(default='')
     code_inep: str = field(default='')
     created_at: datetime = field(default_factory=datetime.now)

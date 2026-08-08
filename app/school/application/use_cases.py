@@ -2,7 +2,7 @@ from typing import List
 from uuid import UUID
 
 from app.school.domain.repositories import ISchoolRepository
-from app.school.application.dto import SchoolInDTO, SchoolOutDTO
+from app.school.application.dto import SchoolInDTO, SchoolOutDTO, SchoolUpdateDTO
 from app.school.domain.entities import SchoolEntity
 from app.school.domain.exceptions import NotFoundSchoolException
 
@@ -40,7 +40,7 @@ class UpdateSchoolUseCase:
     def __init__(self, school_repo: ISchoolRepository):
         self.school_repo = school_repo
 
-    def execute(self, id: UUID, dto: SchoolInDTO) -> SchoolOutDTO:
+    def execute(self, id: UUID, dto: SchoolUpdateDTO) -> SchoolOutDTO:
         school = self.school_repo.find_by_id(id)
         if not school:
             raise NotFoundSchoolException('not found school with this id')
